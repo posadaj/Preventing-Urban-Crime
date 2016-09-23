@@ -1,0 +1,82 @@
+\documentclass[12pt,letterpaper]{article} 
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper, portrait, margin=1.0in]{geometry}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{url}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\usepackage{color}
+\definecolor{mygreen}{RGB}{28,172,0}
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\title{Preventing Urban Crime}
+\author{Jonathan Posada, Calvin Ying}
+\date{Fall 2016}
+
+\begin{document}
+
+\begin{titlepage}
+    \vspace*{0.5cm}
+    \begin{center}
+    {\scshape\huge Preventing Urban Crime \par}
+    \vspace{1cm}
+    {\itshape\large Jonathan Posada, Calvin Ying \par}
+    \vspace{0.5cm}
+    {\itshape\large ORIE 4741 Project Proposal \par}
+    \vspace{1cm}
+    
+    \end{center}
+
+
+\section*{Introduction}
+This is a final project for the course ORIE 4741: Learning with Big Messy Data offered at Cornell University and taught by Professor Madeleine Udell. The students seek to use machine learning to prevent urban crime. Using an open dataset for Philadelphia crime, we set out to find factors that are correlated with crime.
+
+\section*{Proposal}
+Crime is an issue that plagues many major cities across the US; and though the public's perception of crime is often skewed \cite{crime_perception}, crime is nonetheless an issue that homebuyers heavily consider.
+We seek to understand the problem of crime using machine learning and create insights that can lead to simple solutions. Using machine learning we hope to answer questions such as:
+\begin{itemize}
+\item What is the relationship between crime and housing prices?
+\item How is crime related to things such as number of local parks, nearby schools and quality of those schools?
+\end{itemize}
+
+\section*{Resources}
+\begin{itemize}  
+\item Philadephia crime dataset \cite{kaggle}
+\item House values \cite{zillow}
+\item House Price Index \cite{fhfa}
+\end{itemize}
+
+All datasets are publicly available, either by download or by use of an API
+
+
+\begin{thebibliography}{9}
+\bibitem{crime_perception} 
+America's Faulty Perception of Crime Rates | Brennan Center for Justice
+\\\texttt{https://www.brennancenter.org/blog/americas-faulty-perception-crime-rates}
+
+\bibitem{kaggle}
+Philadelphia Crime Data | Kaggle
+https://www.kaggle.com/mchirico/philadelphiacrimedata
+\\\texttt{https://www.kaggle.com/mchirico/philadelphiacrimedata}
+
+\bibitem{zillow}
+Zillow
+Inc. Zillow - http://www.zillow.com/philadelphia-pa/home-values/
+\\\texttt{http://www.zillow.com/philadelphia-pa/home-values/}
+
+\bibitem{fhfa}
+House Price Index
+http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index.aspx
+\\\texttt{http://www.fhfa.gov/DataTools/Downloads/Pages/House-Price-Index.aspx}
+
+ 
+\end{thebibliography}
+\end{titlepage}
+
+\end{document}
+
