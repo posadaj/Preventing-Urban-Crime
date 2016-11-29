@@ -1,0 +1,8 @@
+Info about each dataset
+=======================
+
+Theft: Original dataset from Kaggle filtered for easier analysis. Includes only theft crimes. Of the theft crimes, includes 40k randomly selected samples
+
+PPR_Assets: Comprehensive dataset on Parks+Rec department (currently not included in analysis)
+
+PPR_StreetTrees: List of planted trees in city (inclduing random 10k samples)
