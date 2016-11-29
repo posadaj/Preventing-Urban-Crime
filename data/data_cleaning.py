@@ -4,7 +4,7 @@ import sys, csv
 import googlemaps
 
 # Open endpoint
-KEY = "AIzaSyC-gstDAvicrDDCyOMTdE4lL1hxTA6qW2s"
+KEY = "AIzaSyDupWadt9tTVDrFp2nmtrmwBQ9cn7jMMwQ"
 gmaps = googlemaps.Client(key=KEY)
 
 # Philly zip codes from
@@ -115,8 +115,9 @@ if __name__ == '__main__':
     python data_cleaning <filename> <lon_idx> <lat_idx>
     """
 
-    # python data_cleaning.py theft.csv 11 12
     # python data_cleaning.py PPR_StreetTrees.csv 0 1
+    # python data_cleaning.py theft.csv 11 12
+    # python data_cleaning.py 2014crimetrainingdata.csv 12 13
 
 
     # Check that script called correctly
