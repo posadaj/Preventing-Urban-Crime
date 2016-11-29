@@ -1,7 +1,9 @@
 Info about each dataset
 =======================
 
-Theft: Original dataset from Kaggle filtered for easier analysis. Includes only theft crimes. Of the theft crimes, includes 40k randomly selected samples
+2014 crime training: Roughly 32k randomly selected crime samples from cleaned Kaggle dataset. Cleaning inclduing removing incomplete samples and ambiguous crime types
+
+2015 crime test: Roughly 8k randomly selected crime samples from cleaned Kaggle dataset. Cleaning inclduing removing incomplete samples and ambiguous crime types
 
 PPR_Assets: Comprehensive dataset on Parks+Rec department (currently not included in analysis)
 
