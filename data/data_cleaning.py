@@ -4,7 +4,7 @@ import sys, csv
 import googlemaps
 
 # Open endpoint
-KEY = "AIzaSyC9Jy4Z-p0Kyx8WAAZ48FTcyS9_fRzQcg4"
+KEY = "AIzaSyDUUMFsw9MIN9JuKKLt1p5f1DsjTMXaTjg"
 gmaps = googlemaps.Client(key=KEY)
 
 # Philly zip codes from
