@@ -5,7 +5,7 @@ import numpy as np
 from sklearn import linear_model, preprocessing, metrics
 
 
-def main( train_data, test_data ):
+def main( train_data, test_data, added_features ):
     ##############################
     # Create model from train data
     ##############################
@@ -15,15 +15,12 @@ def main( train_data, test_data ):
 
     # Extract X, y from data
     raw_data = np.array(list(reader)).astype('float')
+    raw_data = preprocessing.scale(raw_data)  # Standardize data
     _, cols = raw_data.shape
     X = raw_data[:, 0:cols-1]
     y = raw_data[:, cols-1]
 
-    # Standardize data
-    # X = preprocessing.scale(raw_data)
-
     # Only consider certain features
-    added_features  = 4
     subset_features = True
     if (subset_features):
         X = X[:, :added_features]        # Remove time distribution columns
@@ -60,11 +57,12 @@ def main( train_data, test_data ):
     # Read test data to evaluate models
     reader   = csv.reader(open(test_data,"rb"), delimiter=",")
     raw_data = np.array(list(reader)).astype('float')
+    raw_data = preprocessing.scale(raw_data)  # Standardize data
     _, cols = raw_data.shape
 
     X_test = raw_data[:, 0:cols-1]  
     y_test = raw_data[:, cols-1]
-     
+
     if (subset_features):
         X_test = X_test[:, :added_features]  # Remove time distribution columns
 
@@ -89,13 +87,19 @@ if __name__ == '__main__':
     # Perform analysis on train/test data
 
     # python analysis.py zipcode_2015_train_matrix.csv zipcode_2015_test_matrix.csv
+    # python analysis.py zipcode_2015_train_tree_matrix.csv zipcode_2015_test_tree_matrix.csv 5
 
     # Program expects a filename to perform analysis
-    if len(sys.argv) != 3:
+    if len(sys.argv) < 3:
         print("Error: Incorrect input")
         sys.exit()
 
     # Extract filename
     train_data = sys.argv[1]
     test_data  = sys.argv[2]
-    main( train_data, test_data )
+    if len(sys.argv) == 4:
+        added_features = int(sys.argv[3])
+    else:
+        added_features = 4
+
+    main( train_data, test_data, added_features )
