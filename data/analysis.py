@@ -46,13 +46,6 @@ def main( train_data, test_data ):
     # Display results
     np.set_printoptions(precision=3) # Reduce precision for displaying w
 
-    """
-    # Threshold data
-    threshold = 10**-3               # Remove 0 valued parameters
-    w_reg = w_reg*(w_reg>threshold)
-    w_ridge_reg_cv = w_ridge_reg_cv*(w_ridge_reg_cv>threshold)
-    """
-
     # Display model
     print("\n")
     print( "Model w_reg is          {}".format(w_reg) )
@@ -71,7 +64,7 @@ def main( train_data, test_data ):
 
     X_test = raw_data[:, 0:cols-1]  
     y_test = raw_data[:, cols-1]
-
+     
     if (subset_features):
         X_test = X_test[:, :added_features]  # Remove time distribution columns
 
@@ -86,14 +79,16 @@ def main( train_data, test_data ):
     score_lasso_out = metrics.mean_absolute_error(y_test, np.dot(X_test, w_lasso) ) 
 
     # Dispaly E_in
-    print( "\n{}\t {}\t {}\t".format("Model", "E_in", "E_out") )
-    print( "regression  {}  {}".format( score_reg_in, score_reg_out ) )
-    print( "ridge_reg_cv  {}  {}".format( score_rr_cv_in, score_rr_cv_out ) )
-    print( "lasso  {}  {}".format( score_lasso_in, score_lasso_out ) )
+    print( "\n{:12} {:10} {} ".format("Model", "E_in", "E_out") )
+    print( "{:12} {:3f} {:3f}".format( "regression", score_reg_in, score_reg_in ) )
+    print( "{:12} {:3f} {:3f}".format( "ridge_reg_cv", score_rr_cv_in, score_rr_cv_out ) )
+    print( "{:12} {:3f} {:3f}".format( "lasso", score_lasso_in, score_lasso_out ) )
     print("\n")
 
 if __name__ == '__main__':
     # Perform analysis on train/test data
+
+    # python analysis.py zipcode_2015_train_matrix.csv zipcode_2015_test_matrix.csv
 
     # Program expects a filename to perform analysis
     if len(sys.argv) != 3:
