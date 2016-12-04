@@ -4,23 +4,25 @@ import sys, csv
 import googlemaps
 
 # Open endpoint
-KEY = "AIzaSyAQ6v5twZhG5xUpjRlXcSMH9RLTzE55qvI"
+KEY = "AIzaSyCPWsOrv_x78J1lF5qQ-m2C1NeV6GyRlCQ"
 gmaps = googlemaps.Client(key=KEY)
 
 
-def main( in_fname, lon_idx, lat_idx, lon_lat_fname, out_fname ):
+def main( in_fname, lon_idx, lat_idx, lon_lat_fname, out_fname, fraction ):
 
     # Extract lon/lat
-    extract_lon_lat( in_fname, lat_idx, lon_idx, lon_lat_fname )
+    extract_lon_lat( in_fname, lat_idx, lon_idx, lon_lat_fname, fraction )
     print("Completed extraction")
-
 
     # Convert lon/lat to zip
     lon_lat_to_zip( lon_lat_fname, out_fname )
     print("Completed conversion")
+    
 
 
-def extract_lon_lat( fname, lat_idx, lon_idx, outname ):
+import random
+
+def extract_lon_lat( fname, lat_idx, lon_idx, outname, fraction ):
   """ Create CSV file with zip code. """ 
 
   # Extract lat/lon data
@@ -33,8 +35,16 @@ def extract_lon_lat( fname, lat_idx, lon_idx, outname ):
     # Skip header row
     header = fid_r.readline()
 
+    # Initialize random number generator
+    random.seed(5)
+
     # Iterate over rows
     for line in fid_r:
+
+        # Only extract a specified fraction of samples
+        if ( random.random() > fraction ):
+            continue
+
 
         # Extract lat/lon
         line = line.split(',')
@@ -106,14 +116,16 @@ if __name__ == '__main__':
     """
 
     # python data_cleaning.py 2015crimetestdata.csv 12 13
+    # python data_cleaning.py PPR_StreetTrees.csv 0 1 0.089
 
 
     # Check that script called correctly
-    if (len(sys.argv) != 4 ):
+    if (len(sys.argv) < 4 ):
         print('Error')
 
-    lon_idx = int( sys.argv[2] )
-    lat_idx = int( sys.argv[3] )
+    lon_idx  = int( sys.argv[2] )
+    lat_idx  = int( sys.argv[3] )
+    fraction = float( sys.argv[4] )
 
     # Create intermediate filename
     in_fname = sys.argv[1]
@@ -126,4 +138,4 @@ if __name__ == '__main__':
     tmp.insert(1, '_zip.')
     out_fname = ''.join(tmp)
 
-    main(in_fname, lon_idx, lat_idx, lon_lat_fname, out_fname)
+    main(in_fname, lon_idx, lat_idx, lon_lat_fname, out_fname, fraction)
